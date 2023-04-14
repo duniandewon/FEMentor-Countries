@@ -15,8 +15,6 @@ This is a solution to the [REST Countries API with color theme switcher challeng
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -54,8 +52,6 @@ Users should be able to:
 ### What I learned
 
 How to setup router in vue in navigate between them.
-
-To see how you can add code snippets, see below:
 
 ```html
 <RouterLink to="/">Where in the world</RouterLink>
