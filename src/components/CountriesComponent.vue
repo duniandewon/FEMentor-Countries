@@ -24,9 +24,12 @@ const store = useCountriesStore()
 const { countries } = storeToRefs(store)
 
 const getCountries = async () => {
+  if (JSON.parse(sessionStorage.getItem('countries-cached')!)) return (countries.value = data)
+
   await new Promise((resolve) => setTimeout(resolve, 5000))
   countries.value = data
-  console.log('hello')
+
+  sessionStorage.setItem('countries-cached', 'true')
 }
 
 await getCountries()
