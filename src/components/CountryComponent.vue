@@ -38,11 +38,12 @@ const props = defineProps<Prop>()
 const to = '/country/' + props.id
 </script>
 
-<style scoped>
+<style>
 .country {
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
   background-color: var(--color-element);
+  min-width: 15rem;
   max-width: 20rem;
   overflow: hidden;
 }

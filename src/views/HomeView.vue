@@ -4,32 +4,32 @@
     <Dropdown />
   </header>
   <main class="main container">
-    <Country
-      v-for="country in countries"
-      :key="country.alpha3Code"
-      :id="country.alpha3Code"
-      :name="country.name"
-      :flag="country.flags.png"
-      :region="country.region"
-      :population="country.population"
-      :capital="country.capital"
-    />
+    <Suspense>
+      <template #default>
+        <Countries />
+      </template>
+      <template #fallback>
+        <div class="main">
+          <CountrySkeleton />
+          <CountrySkeleton />
+          <CountrySkeleton />
+          <CountrySkeleton />
+          <CountrySkeleton />
+          <CountrySkeleton />
+          <CountrySkeleton />
+          <CountrySkeleton />
+        </div>
+      </template>
+    </Suspense>
   </main>
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-
 import Searchbox from '@/components/SearchComponent.vue'
 import Dropdown from '@/components/DropdownComponent.vue'
+import Countries from '@/components/CountriesComponent.vue'
 
-import { useCountriesStore } from '@/stores/countries'
-
-import Country from '@/components/CountryComponent.vue'
-
-const store = useCountriesStore()
-
-const { countries } = storeToRefs(store)
+import CountrySkeleton from '@/components/skeletons/CountrySkeleton.vue'
 </script>
 
 <style scoped>
