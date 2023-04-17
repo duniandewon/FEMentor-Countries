@@ -5,55 +5,55 @@
       <span>Back</span>
     </button>
   </header>
-  <main class="country container">
-    <picture class="country__flag">
+  <main class="country-detail container">
+    <picture class="country-detail__flag">
       <img :src="country?.flag" :alt="country?.name" />
     </picture>
-    <section class="country__body">
-      <h1 class="country__name">{{ country?.name }}</h1>
-      <section class="country__details">
-        <p class="country__detail">
+    <section class="country-detail__body">
+      <h1 class="country-detail__name">{{ country?.name }}</h1>
+      <section class="country-detail__details">
+        <p class="country-detail__detail">
           <span>Native Name:</span>
           <span>{{ country?.nativeName }}</span>
         </p>
-        <p class="country__detail">
+        <p class="country-detail__detail">
           <span>Population:</span>
           <span>{{ country?.population }}</span>
         </p>
-        <p class="country__detail">
+        <p class="country-detail__detail">
           <span>Region:</span>
           <span>{{ country?.region }}</span>
         </p>
-        <p class="country__detail">
+        <p class="country-detail__detail">
           <span>Sub Region:</span>
           <span>{{ country?.subregion }}</span>
         </p>
-        <p class="country__detail">
+        <p class="country-detail__detail">
           <span>Capital:</span>
           <span>{{ country?.capital ? country?.capital : '-' }}</span>
         </p>
       </section>
-      <section class="country__details">
-        <p class="country__detail">
+      <section class="country-detail__details">
+        <p class="country-detail__detail">
           <span>Top Level Domain:</span>
           <span v-for="domain in country?.topLevelDomain" :key="domain">{{ domain }}</span>
         </p>
-        <p class="country__detail">
+        <p class="country-detail__detail">
           <span>Courencies:</span>
           <span v-for="currency in country?.currencies" :key="currency.code">{{
             currency.name
           }}</span>
         </p>
-        <p class="country__detail">
+        <p class="country-detail__detail">
           <span>Languages:</span>
           <span v-for="language in country?.languages" :key="language.iso639_2">{{
             language.name
           }}</span>
         </p>
       </section>
-      <footer class="country__footer" v-if="country?.borders?.length">
+      <footer class="country-detail__footer" v-if="country?.borders?.length">
         <h2>Border Countries</h2>
-        <ul class="country__neighbors">
+        <ul class="country-detail__neighbors">
           <li v-for="neighbor in country?.borders" :key="neighbor">
             <RouterLink class="btn" :to="'/country/' + neighbor">{{ neighbor }}</RouterLink>
           </li>
@@ -90,19 +90,19 @@ watch(
 .header {
   margin: 2rem 0;
 }
-.country__footer,
-.country__flag {
+.country-detail__footer,
+.country-detail__flag {
   margin: 2.5rem 0 2rem;
-  max-width: 45rem;
+  width: 100%;
 }
 
-.country__body {
+.country-detail__body {
   max-width: 50rem;
   display: grid;
   gap: 2rem;
 }
 
-.country__neighbors {
+.country-detail__neighbors {
   padding: 0;
   margin-top: 2rem;
   list-style: none;
@@ -111,26 +111,30 @@ watch(
   gap: 2rem;
 }
 
-.country__detail span:first-child {
+.country-detail__detail span:first-child {
   font-weight: var(--fw-bold);
 }
 
 @media (min-width: 768px) {
-  .country__body {
+  .country-detail__body {
     grid-template-columns: 1fr 1fr;
   }
 
-  .country__name,
-  .country__footer {
+  .country-detail__name,
+  .country-detail__footer {
     grid-column: 1 / span 2;
   }
 }
 
 @media (min-width: 1024px) {
-  .country {
+  .country-detail {
     display: flex;
     align-items: center;
     gap: 5rem;
+  }
+
+  .country-detail__flag {
+  max-width: 45rem;
   }
 }
 </style>
