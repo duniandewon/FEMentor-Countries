@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 import data from '@/data.json'
 
 export const useCountriesStore = defineStore('countries', () => {
-  const countries = ref(data)
+  const countries = ref<typeof data>([])
 
   const getCountryById = computed((id: string) =>
     data.filter((country) => country.alpha3Code === id)
